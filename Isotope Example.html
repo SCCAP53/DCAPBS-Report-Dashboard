@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience Statistics: Stat-Widgets">
+    <meta name="author" content="Felix Schönbrodt">
+
+    <title>Experience Statistics</title>
+	
+	<!-- Included libraries -->
+	<link href="https://github.research.chop.edu/pages/CQI/chop-bootstrap/bootstrap-3/bootstrap.min.css" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+	
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		
+		
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>	
+	<!-- <script src="/includes/isotope.pkgd.min.old.js"></script> -->
+	<!-- <script src="/includes/masonry-horizontal.js"></script> -->
+	
+	<!-- Here are styles for the tiles -->
+	<style type="text/css">
+	      body {
+	        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	      }
+		  .shiny-prev-img {
+		  	border: 1px solid #AAAAAA;
+			margin:2% 2% 2% 2%; /* leave some margin that the image can grow; should be relative %*/
+			/* For hover effect: grow*/
+			-moz-transition:-moz-transform 0.1s ease-in; 
+			-webkit-transition:-webkit-transform 0.1s ease-in; 
+			-o-transition:-o-transform 0.1s ease-in;
+		  }
+		  .shiny-prev-img:hover {
+		      box-shadow: 0px 0px 20px 5px #DDDDDD;
+			  /* For hover effect: grow*/
+			  -moz-transform:scale(1.03); 
+			  -webkit-transform:scale(1.03);
+			  -o-transform:scale(1.03);
+		  }
+		  .tile {
+			  border: 1px solid #333333;
+			  margin-bottom: 25px;  /*vertical distance between tiles*/
+			  margin-right: 10px;
+			  margin-left: 10px;
+		  }
+	</style>
+	
+	
+	<!-- A script for the automatic tile layout, based on Isotope -->
+	<script type="text/javascript">
+		$(window).load(function(){
+		$(function(){
+			// // init Isotope: Automatically filter and arrange the widget-tiles
+			var $container = $('#shinytiles');
+
+			$container.isotope({
+			  // options
+			  itemSelector : '.tile', // class of divs that should be selectable
+			  layoutMode : 'masonry'
+			});
+
+			// filter items on button click
+			$('#filters').on('click', 'button', function( event ) {
+			 			  var filterValue = $(this).attr('data-filter-value');
+			  $container.isotope({ filter: filterValue });
+			});
+			
+			// TODO: Das klappt noch  nicht
+			// Filter: dropdown box with author names
+			// $('#authorfilter').change(function( event ) {
+			//  			  var filterValue = $(this).attr('data-filter-value');
+			//   $container.isotope({ filter: filterValue });
+			// });
+			
+		});});
+	</script>
+	
+	<!-- Go to www.addthis.com/dashboard to customize your tools -->
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-564f364b3d794f37" async="async"></script>
+	<script type="text/javascript">
+	var addthis_share = addthis_share || {}
+	addthis_share = {
+		passthrough : {
+			twitter: {
+				text: "Shinyapps: Interactive statistic apps"
+			}
+		}
+	}
+	</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-421964-10', 'auto');
+  ga('send', 'pageview');
+
+</script></head>
+
+<body>	
+	
+	<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">	
+		<div class="container">
+		   <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <!-- <a class="navbar-brand" style="margin-top:-7px" href="/"> -->
+		<a class="navbar-brand" style="margin-top:0px" href="/">	
+			<!-- <img align="center" style="max-width:90px; vertical-align:middle;" src="/includes/beta_logo.png"> -->
+			ShinyApps: Experience Statistics</a>
+</div>
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse navbar-ex1-collapse">
+		        <ul class="nav navbar-nav">
+		            <li><a href="https://shinyapps.org/apps/p-checker/">p-checker</a>
+		            </li>
+		            <li><a href="https://shinyapps.org/apps/p-hacker/">p-hacker</a>
+		            </li>
+		            <li><a href="/about.php">About</a>
+		            </li>
+		            <li><a href="/links.php">Links</a>
+		            </li>
+		            <li><a href="http://www.nicebread.de">nicebread.de</a>
+		            </li>
+		            <li><a href="mailto:felix@nicebread.de">Contact</a>
+		            </li>
+		        </ul>
+		    </div>
+		    <!-- /.navbar-collapse -->
+		</div>
+	</nav>
+	
+	<!-- <div class="alert alert-danger" role="alert">
+	  2019-07-10: Please note: We currently upgrade the server - shiny apps will be down for some while.
+	</div> -->
+
+
+    <div class="container-fluid">
+
+
+		
+
+		<!-- Show case: the featured app -->
+        <div class="row">			
+            <div class="col-lg-12"><h1 class="page-header">Featured App</h1></div>
+        </div>
+		
+		<!-- <div class="row">
+			<div class="col-md-5">
+				<a href="http://shinyapps.org/apps/p-checker">
+				<img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/p-checker.jpg">
+				</a>
+			</div>
+			<div class="col-md-7">
+				<h3>p-checker: The one-for-all p-value analyzer</h3><h6> by Felix Schönbrodt</h6><span class="badge alert-info">p-values</span><br><br>
+				<p>This Shiny app implements the p-curve (Simonsohn, Nelson, & Simmons, 2014; see http://www.p-curve.com) in its previous ("app2") and the current version ("app3"), the R-Index and the Test of Insufficient Variance, TIVA (Schimmack, 2014; see http://www.r-index.org/), and tests whether p values are reported correctly.</p>
+			</div>
+		</div class ="row"> -->
+		<div class="row">
+			<div class="col-md-5">
+				<a href="https://www.shinyapps.org/apps/p-hacker">
+				<img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/p-hacker.jpg">
+				</a>
+			</div>
+			<div class="col-md-7">
+				<h3>p-hacker: Train your p-hacking skills!</h3><h6> by Felix Schönbrodt</h6><span class="badge alert-info">p-values</span><span class="badge alert-info">teaching</span><br><br>
+				<p>Train your expert p-hacking skills with the interactive p-hacker app! Who gets p&lt;.05 first?</p>
+			</div>
+		</div class ="row">
+			
+		
+		<!--The full list of apps, dynamically generated -->
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">Shiny widgets
+                    <small>Experience statistics</small>
+                </h1>
+            </div>
+
+        </div>
+		
+		<!-- Dynamically construct dropdown list of authors -->
+		<!-- <div id="authorfilter">
+			<select data-filter-group="authors">
+			    <option value="*" data-filter-value="" class="selected">All authors</option>
+				<option value="FS" data-filter-value=".Felix_Schönbrodt">FS</option>
+				<option value="FS" data-filter-value=".histogram">hit</option>
+
+							</select>
+		</div> -->
+				
+		<!-- Dynamically construct menu of tags -->
+		<div id="filters" class="btn-group btn-group-sm">
+			<button class="btn btn-success" data-filter-value="*">Show all</button>
+			<button class="btn btn-info" data-filter-value=".p-value">p-value</button>
+<button class="btn btn-info" data-filter-value=".teaching">teaching</button>
+<button class="btn btn-info" data-filter-value=".plot">plot</button>
+<button class="btn btn-info" data-filter-value=".diagnosticity">diagnosticity</button>
+<button class="btn btn-info" data-filter-value=".power">power</button>
+<button class="btn btn-info" data-filter-value=".clustering">clustering</button>
+<button class="btn btn-info" data-filter-value=".Bayes">Bayes</button>
+<button class="btn btn-info" data-filter-value=".paper">paper</button>
+<button class="btn btn-info" data-filter-value=".outlier">outlier</button>
+<button class="btn btn-info" data-filter-value=".plot">plot</button>
+<button class="btn btn-info" data-filter-value=".regression">regression</button>
+<button class="btn btn-info" data-filter-value=".game">game</button>
+<button class="btn btn-info" data-filter-value=".quiz">quiz</button>
+<button class="btn btn-info" data-filter-value=".distribution">distribution</button>
+<button class="btn btn-info" data-filter-value=".histogram">histogram</button>
+			<br><br><br>
+		</div>
+
+
+
+		<div id="shinytiles">
+
+			<!-- Dynamically construct the tiles -->
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile p-value plot Sven_Hilbert">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/z-to-p/&by=Sven Hilbert&title=From z to p: A visualization of the link between the two distributions&shorttitle=From z to p">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/z-to-p.png">
+			                </a><h4>From z to p: A visualization of the link between the two distributions</h4><h6> by Sven Hilbert</h6><span class="badge alert-info">p-value</span><span class="badge alert-info">plot</span><br><br><p>Ever wondered why p-values are uniformly distributed if the H0 is accurate, even though the data are normally distributed? This animated app visualizes the connection of the two via the CDF and lets you explore the relationship between effect size and skewness of the distribution of p-values.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile p-value plot diagnosticity Erik-Jan_van_Kesteren_and_Eric-Jan_Wagenmakers">	<a href="https://www.shinyapps.org/apps/vs-mpr/">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/teaser_picture_MPR.png">
+			                </a><h4>Exploring the diagnosticity of the p-value</h4><h6> by Erik-Jan van Kesteren and Eric-Jan Wagenmakers</h6><span class="badge alert-info">p-value</span><span class="badge alert-info">plot</span><span class="badge alert-info">diagnosticity</span><br><br><p>Explore the Vovk-Sellke Maximum p-Ratio, a measure that indicates the maximum diagnosticity of a given p-value. Choose your own p-value to find out how diagnostic it is for your research!</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile p-value power Daniel_Lakens">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/lakens_pcurve/&by=Daniel Lakens&title=P-value distribution and power curves for an independent two-tailed t-test&shorttitle=P-value distribution and power curves">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/lakens_pcurve.png">
+			                </a><h4>P-value distribution and power curves for an independent two-tailed t-test</h4><h6> by Daniel Lakens</h6><span class="badge alert-info">p-value</span><span class="badge alert-info">power</span><br><br><p>Plot the theoretical p-value distribution and power curve for an independent t-test based on the effect size, sample size, and alpha.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile clustering Jan_Freyberg">	<a href="showapp.php?app=http://shiny.janfreyberg.com/elbow-kmeans/&by=Jan Freyberg&title=Univariate k-Means Clustering with elbow method&shorttitle=Univariate k-Means Clustering with elbow method">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/elbowCluster.png">
+			                </a><h4>Univariate k-Means Clustering with elbow method</h4><h6> by Jan Freyberg</h6><span class="badge alert-info">clustering</span><br><br><p>Identify how many clusters your one-dimensional data can be grouped in and how much variance you can explain with these clusters by using the "elbow method".</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile Bayes Christoph_Huber-Huber">	<a href="showapp.php?app=https://chsquare.shinyapps.io/BICapproxApp/&by=Christoph Huber-Huber&title=BIC approximation for ANOVA designs&shorttitle=BIC approximation for ANOVA designs">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/BICapproxApp.png">
+			                </a><h4>BIC approximation for ANOVA designs</h4><h6> by Christoph Huber-Huber</h6><span class="badge alert-info">Bayes</span><br><br><p>Obtain a Bayesian interpretation of your ANOVA results with this app. You just need to enter your sum of squares and some information about your design.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile paper Etienne_LeBel">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/N-per-discovery&by=Etienne LeBel&title=N per discovery&shorttitle=N per discovery">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/N-per-discovery.jpg">
+			                </a><h4>N per discovery</h4><h6> by Etienne LeBel</h6><span class="badge alert-info">paper</span><br><br><p>App to explore the cost-effectiveness of different research approaches to unearth true scientific discoveries.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile outlier Rajiv_Shah">	<a href="http://projects.rajivshah.com/shiny/outlier/">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/RS_2D_outliers.jpg">
+			                </a><h4>2D Outlier analysis</h4><h6> by Rajiv Shah</h6><span class="badge alert-info">outlier</span><br><br><p>The app allows you to see the trade-offs on various types of outlier/anomaly detection algorithms. Outliers are marked with a star and cluster centers with an X.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile teaching Michael_Zehetleitner_and_Felix_Schönbrodt">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/PPV&by=Michael Zehetleitner and Felix Schönbrodt&title=When does a significant p-value indicate a true effect?&shorttitle=When does a significant p-value indicate a true effect?">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/PPV.jpg">
+			                </a><h4>When does a significant p-value indicate a true effect?</h4><h6> by Michael Zehetleitner and Felix Schönbrodt</h6><span class="badge alert-info">teaching</span><br><br><p>Understanding the Positive Predictive Value (PPV) of a p-value.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile p-value Felix_Schönbrodt">	<a href="https://shinyapps.org/apps/p-checker">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/p-checker.jpg">
+			                </a><h4>p-checker: The one-for-all p-value analyzer</h4><h6> by Felix Schönbrodt</h6><span class="badge alert-info">p-value</span><br><br><p>This Shiny app implements the p-curve (Simonsohn, Nelson, & Simmons, 2014; see http://www.p-curve.com) in its previous ("app2") and the current version ("app3"), the R-Index and the Test of Insufficient Variance, TIVA (Schimmack, 2014; see http://www.r-index.org/), and tests whether p values are reported correctly.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile Bayes teaching Felix_Schönbrodt">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/feel_BF2&by=Felix Schönbrodt&title=What does a Bayes factor look like? (2) Height difference between males and females.&shorttitle=What does a Bayes factor look like? (2)">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/heightdiff.jpg">
+			                </a><h4>What does a Bayes factor look like? (2) Height difference between males and females.</h4><h6> by Felix Schönbrodt</h6><span class="badge alert-info">Bayes</span><span class="badge alert-info">teaching</span><br><br><p>Can you "see" a group mean difference, just by eyeballing the data? Is your gut feeling aligned to the formal index of evidence, the Bayes factor?</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile Bayes teaching Felix_Schönbrodt">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/seq_binom&by=Felix Schönbrodt&title=What does a Bayes factor look like? (1) The urn model.&shorttitle=What does a Bayes factor look like? (1)">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/seq_binom.jpg">
+			                </a><h4>What does a Bayes factor look like? (1) The urn model.</h4><h6> by Felix Schönbrodt</h6><span class="badge alert-info">Bayes</span><span class="badge alert-info">teaching</span><br><br><p>How much is a BF of 3.7? Well, it is "moderate evidence" for an effect - whatever that means. Let's approach the topic a bit more experientially. What does such a BF look like, visually? We take the good old urn model as an example.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile Bayes Eric-Jan_Wagenmakers">	<a href="https://tellmi.psy.lmu.de/felix/BayesLessons/BayesianLesson1.Rmd">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/BayesLesson1.jpg">
+			                </a><h4>A First Lesson in Bayesian Inference</h4><h6> by Eric-Jan Wagenmakers</h6><span class="badge alert-info">Bayes</span><br><br><p>This app highlights several key Bayesian concepts.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile Bayes  plot Eric-Jan_Wagenmakers">	<a href="https://shinyapps.org/apps/RGraphCompendium/index.html">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/graph_compendium.jpg">
+			                </a><h4>A Compendium of Clean Graphs in R</h4><h6> by Eric-Jan Wagenmakers</h6><span class="badge alert-info">Bayes</span><span class="badge alert-info">plot</span><br><br><p>When done right, graphs can be appealing, informative, and of considerable value to an academic article. This compendium facilitates the creation of good graphs by presenting a set of concrete examples, ranging from the trivial to the advanced. The graphs can all be reproduced and adjusted by copy-pasting code into the R console.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile Bayes  plot Felix_Schönbrodt">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/BF_robustness&by=Felix Schönbrodt&title=Bayes factor robustness&shorttitle=Bayes factor robustness">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/BF_robustness.jpg">
+			                </a><h4>Bayes factor robustness</h4><h6> by Felix Schönbrodt</h6><span class="badge alert-info">Bayes</span><span class="badge alert-info">plot</span><br><br><p>Check how your Bayes factor conclusion depends on the r-scale parameter.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile regression  plot Felix_Schönbrodt">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/polySurface&by=Felix Schönbrodt&title=Polynomial Surface Explorer&shorttitle=Polynomial Surface Explorer">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/polySurface.jpg">
+			                </a><h4>Polynomial Surface Explorer</h4><h6> by Felix Schönbrodt</h6><span class="badge alert-info">regression</span><span class="badge alert-info">plot</span><br><br><p>Adjust regression parameters to bend and shift a two-dimensional polynomial surface.</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile regression  plot  game Felix_Schönbrodt">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/lmfit&by=Felix Schönbrodt&title=Find-a-fit!&shorttitle=Find-a-fit!">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/lmfit.jpg">
+			                </a><h4>Find-a-fit!</h4><h6> by Felix Schönbrodt</h6><span class="badge alert-info">regression</span><span class="badge alert-info">plot</span><span class="badge alert-info">game</span><br><br><p>Be an optimizer: Find the best linear fit!</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile quiz Tobias_Kächele">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/TK/1&by=Tobias Kächele&title=Robustness of Mean and Median&shorttitle=Robustness of Mean and Median">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/TK1.jpg">
+			                </a><h4>Robustness of Mean and Median</h4><h6> by Tobias Kächele</h6><span class="badge alert-info">quiz</span><br><br><p>Which is more robust against outliers: Mean or median?</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile quiz  distribution Tobias_Kächele">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/TK/2&by=Tobias Kächele&title=Normal distribution vs. binomial&shorttitle=Normal distribution vs. binomial">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/TK2.jpg">
+			                </a><h4>Normal distribution vs. binomial</h4><h6> by Tobias Kächele</h6><span class="badge alert-info">quiz</span><span class="badge alert-info">distribution</span><br><br><p>Approximating a normal distribution with a binomial distribution</p>
+			</div><div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile quiz  histogram  distribution Tobias_Kächele">	<a href="showapp.php?app=https://tellmi.psy.lmu.de/felix/TK/3&by=Tobias Kächele&title=Production errors&shorttitle=Production errors">
+			                    <img class="img-responsive img-rounded shiny-prev-img" src="/teaserpics/TK3.jpg">
+			                </a><h4>Production errors</h4><h6> by Tobias Kächele</h6><span class="badge alert-info">quiz</span><span class="badge alert-info">histogram</span><span class="badge alert-info">distribution</span><br><br><p>Get acquainted with histograms.</p>
+			</div>			
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    
+	<div class="addthis_sharing_toolbox"></div>
+
+	<hr>
+<footer id="footer">
+	<div class="well">
+		<p>Copyright &copy; Felix Schönbrodt 2014 <a href="http://www.nicebread.de">http://www.nicebread.de</a>  -  
+			<a href="/impressum.php">Impressum</a>
+-
+			<a href="/datenschutz.php">Datenschutz</a></p>
+    </div>
+</footer></body>
+
+</html>

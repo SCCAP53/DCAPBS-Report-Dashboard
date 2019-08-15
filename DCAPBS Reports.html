@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DCAPBS Reports and Dashboards">
+    <meta name="author" content="Stephon Proctor, PhD, ABPP">
+
+    <title>DCAPBS Reports and Dashboards</title>
+	
+	<!-- Included libraries -->
+	<link href="https://github.research.chop.edu/pages/CQI/chop-bootstrap/bootstrap-3/bootstrap.min.css" rel="stylesheet">
+	
+	
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+	
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		
+		
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>	
+	<!-- <script src="/includes/isotope.pkgd.min.old.js"></script> -->
+	<!-- <script src="/includes/masonry-horizontal.js"></script> -->
+	
+	<!-- Here are styles for the tiles -->
+	<style type="text/css">
+	      body {
+	        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	      }
+		  .shiny-prev-img {
+		  	border: 1px solid #AAAAAA;
+			margin:2% 2% 2% 2%; /* leave some margin that the image can grow; should be relative %*/
+			/* For hover effect: grow*/
+			-moz-transition:-moz-transform 0.1s ease-in; 
+			-webkit-transition:-webkit-transform 0.1s ease-in; 
+			-o-transition:-o-transform 0.1s ease-in;
+		  }
+		  .shiny-prev-img:hover {
+		      box-shadow: 0px 0px 20px 5px #DDDDDD;
+			  /* For hover effect: grow*/
+			  -moz-transform:scale(1.03); 
+			  -webkit-transform:scale(1.03);
+			  -o-transform:scale(1.03);
+		  }
+		  .tile {
+			  border: 1px solid #333333;
+			  margin-bottom: 25px;  /*vertical distance between tiles*/
+			  margin-right: 10px;
+			  margin-left: 10px;
+		  }
+		  .badge {
+				display: inline-block;
+				min-width: 10px;
+				padding: 3px 7px;
+				font-size: 13px;
+				font-weight: bold;
+				color: #665546;
+				line-height: 1;
+				vertical-align: middle;
+				white-space: nowrap;
+				text-align: center;
+				background-color: #e4e0dc;
+				border-radius: 10px;
+			}
+			.btn-info {
+    	color: #ffffff;
+		background-color: #339fba;
+		border-color: #e4e0dc;
+}
+	</style>
+	
+	<div class="row">
+		<div class="col-md-7 col-md-offset-3">
+			<h3>DCAPBS Reports and Dashboards</h3>
+			<a href="https://at.chop.edu/communities/psych-behavioral/behavioral-health/Lists/FAQs/All%20Items.aspx">Trouble acccessing a Qlikview or R-Connect Dashboard? Click here.</a>
+		</div>
+	</div class ="row">
+	
+	<!-- A script for the automatic tile layout, based on Isotope -->
+	<script type="text/javascript">
+		$(window).load(function(){
+		$(function(){
+			// // init Isotope: Automatically filter and arrange the widget-tiles
+			var $container = $('#shinytiles');
+
+			$container.isotope({
+			  // options
+			  itemSelector : '.tile', // class of divs that should be selectable
+			  layoutMode : 'masonry'
+			});
+
+			// filter items on button click
+			$('#filters').on('click', 'button', function( event ) {
+			 			  var filterValue = $(this).attr('data-filter-value');
+			  $container.isotope({ filter: filterValue });
+			});
+			
+			// TODO: Das klappt noch  nicht
+			// Filter: dropdown box with author names
+			// $('#authorfilter').change(function( event ) {
+			//  			  var filterValue = $(this).attr('data-filter-value');
+			//   $container.isotope({ filter: filterValue });
+			// });
+			
+		});});
+	</script>
+		
+	</head>
+
+<body>	
+	
+    <div class="container-fluid">
+
+
+		<!--The full list of apps, dynamically generated -->
+        
+		
+				
+		<!-- Dynamically construct menu of tags -->
+		<div id="filters" class="btn-group btn-group">
+			<button class="btn btn-success" data-filter-value="*">Show all</button>
+			<button class="btn btn-info" data-filter-value=".qlikview">Qlikview</button>
+			<button class="btn btn-info" data-filter-value=".rdocs">R-Connect</button>
+			<button class="btn btn-info" data-filter-value=".productivity">Productivity</button>
+			<button class="btn btn-info" data-filter-value=".schedule">Schedule</button>
+			<button class="btn btn-info" data-filter-value=".specialty">Sub-specialty</button>
+			<button class="btn btn-info" data-filter-value=".clintool">Clinical Tools</button>
+			<button class="btn btn-info" data-filter-value=".fellows">Fellows</button>
+			<button class="btn btn-info" data-filter-value=".compliance">Compliance</button>
+			<button class="btn btn-info" data-filter-value=".officevisits">Office Visits</button>
+			<button class="btn btn-info" data-filter-value=".billing">Billing</button>
+			<button class="btn btn-info" data-filter-value=".inpatient">Inpatient</button>
+			<button class="btn btn-info" data-filter-value=".outpatient">Outpatient</button>
+			<button class="btn btn-info" data-filter-value=".epic">Epic Settings</button>
+
+			<br><br><br>
+		</div>
+
+
+
+		<div id="shinytiles">
+
+			<!-- Dynamically construct the tiles -->
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile productivity outpatient inpatient compliance qlikview billing">	<a href="http://essaqvp/QvAJAXZfc/AccessPoint.aspx?open=&id=QVS%40qlvcluster%7CBehavioral%20Health%2FDCAPBS%20Provider%20RVU%20Productivity.qvw&client=Ajax">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.QV.prod_rvu.png">
+			</a><h4>DCAPBS Provider RVU Productivity</h4>
+			<span class="badge alert-info">Qlikview</span>
+			<span class="badge alert-info">Outpatient</span>
+			<span class="badge alert-info">Inpatient</span>
+			<span class="badge alert-info">Schedule</span>
+			<span class="badge alert-info">Productivity</span>
+			<span class="badge alert-info">Compliance</span>
+			<span class="badge alert-info">Billing</span>
+			<br><br><p>Dashboard displaying DCAPBS Provider RVUs and productivity metrics. Allows for filtering by provider (managers only), codes, departments, dates, etc.</p>
+			</div>	
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile rdocs officevisits outpatient compliance fellows">	<a href="https://rstudio-connect.chop.edu/connect/#/apps/629">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.R.overdue_enc.png">
+			</a><h4>Overdue Encounters Report</h4>
+			<span class="badge alert-info">R-Connect</span>
+			<span class="badge alert-info">Office Visits</span>
+			<span class="badge alert-info">Compliance</span>
+			<span class="badge alert-info">Outpatient</span>
+			<span class="badge alert-info">Fellows</span>
+			<br><br><p>Reports on providers who have Office Visits that are overdue for closure based on DCAPBS Close Encounters Policy. Includes types of encounters and details about each visit and encounters routed to attendings for closure.</p>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile rdocs inpatient compliance">	<a href="https://rstudio-connect.chop.edu/connect/#/apps/638">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.R.unsigned_notes_ip.png">
+			</a><h4>Unsigned Inpatient Notes</h4>
+			<span class="badge alert-info">R-Connect</span>
+			<span class="badge alert-info">Inpatient</span>
+			<span class="badge alert-info">Compliance</span>
+				<br><br><p>Reports on providers who have inpatient notes that are overdue for being signed. Includes types of notes and details about each visit.</p>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile schedule officevisits qlikview outpatient">	<a href="http://essaqvp/QvAJAXZfc/AccessPoint.aspx?open=&id=QVS%40qlvcluster%7CBehavioral%20Health%2FDCAPBS%20Office%20Visits.qvw&client=Ajax">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.QV.office_visits.png">
+			</a><h4>DCAPBS Office Visits Explorer</h4>
+			<span class="badge alert-info">Qlikview</span>
+			<span class="badge alert-info">Office Visits</span>
+			<span class="badge alert-info">Schedule</span>
+			<span class="badge alert-info">Outpatient</span>
+			<br><br><p>This dasbhoard allows users to explore data related to outpatient encounters (Office Visits). Several filters are available and data include demographic, department, provider, appointment, diagnosis, and billing details.</p>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile productivity outpatient inpatient compliance qlikview">	<a href="http://essaqvp/QvAJAXZfc/opendoc.htm?document=behavioral%20health%5Cdcapbs%20oppe%20dashboard.qvw&host=QVS%40qlvcluster">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.QV.oppe.png">
+			</a><h4>Ongoing Professional Practice Evaluation (OPPE)</h4>
+			<span class="badge alert-info">Qlikview</span>
+			<span class="badge alert-info">Outpatient</span>
+			<span class="badge alert-info">Inpatient</span>
+			<span class="badge alert-info">Schedule</span>
+			<span class="badge alert-info">Productivity</span>
+			<span class="badge alert-info">Compliance</span>
+			<br><br><p>Dashboard displaying Ongoing Professional Practice Evaluation (OPPE) data for DCAPBS. Includes metrics such as AVS, medical review, CSSRS, Chart Closing, and Note Closing. Provider and Department level data can be filtered.</p>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile rdocs outpatient productivity compliance billing">	<a href="https://rstudio-connect.chop.edu/connect/#/apps/684">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.R.fellow_transfer.png">
+			</a><h4>3440 Outpatient Producivity</h4>
+			<span class="badge alert-info">R-Connect</span>
+			<span class="badge alert-info">Outpatient</span>
+			<span class="badge alert-info">Productivity</span>
+			<span class="badge alert-info">Compliance</span>
+			<span class="badge alert-info">Billing</span>
+			<br><br><p>For 3440 providers only. Displays data regarding performance on RVU, new patient visits, and visit volumes.</p>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile productivity outpatient schedule qlikview officevisits">	<a href="http://essaqvp/QvAJAXZfc/AccessPoint.aspx?open=&id=QVS%40qlvcluster%7CBehavioral%20Health%2FDCAPBS%20Provider%20Availability.qvw&client=Ajax">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.QV.prov_availability.png">
+			</a><h4>Provider Schedule Availability</h4>
+			<span class="badge alert-info">Qlikview</span>
+			<span class="badge alert-info">Outpatient</span>
+			<span class="badge alert-info">Schedule</span>
+			<span class="badge alert-info">Productivity</span>
+			<span class="badge alert-info">Office Visits</span>
+			<br><br><p>Dashboard outpatient past and scheduled appointments for the purpose of displaying provider and department scheduling availability. Displays slot utilization and reasons for slot closings. </p>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile inpatient rdocs clintool">	<a href="https://rstudio-connect.chop.edu/connect/#/apps/675/access">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.R.CSSRS.png">
+			</a><h4>Inpatient CSSRS Data</h4>
+			<span class="badge alert-info">R-Connect</span>
+			<span class="badge alert-info">Inpatient</span>
+			<span class="badge alert-info">Clinical Tools</span>
+			<br><br><p>Report displaying CSSRS complaince for DCAPBS Inpatient Visits.</p>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile specialty outpatient officevisits qlikview">	<a href="http://essaqvp/QvAJAXZfc/AccessPoint.aspx?open=&id=QVS%40qlvcluster%7CBehavioral%20Health%2FDCAPBS%20HMHK.qvw&client=Ajax">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.QV.HMHK.png">
+			</a><h4>Healthy Minds Healthy Kids Program</h4>
+			<span class="badge alert-info">Qlikview</span>
+			<span class="badge alert-info">Specialty</span>
+			<span class="badge alert-info">Office Visits</span>
+			<span class="badge alert-info">Outpatient</span>
+			<br><br><p>This dasbhoard displays information relevant to providers and administrators in the HMHK Program. Includes visit and diagostis statistics, referral tracking, and insurance payor data.</p>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile rdocs epic">	<a href="https://rstudio-connect.chop.edu/connect/#/apps/469">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.R.DCAPBS_DEPS.png">
+			</a><h4>DCAPBS Epic Login Departments</h4>
+			<span class="badge alert-info">R-Connect</span>
+			<span class="badge alert-info">Epic Settings</span>
+			<br><br><p>Lists data about DCAPBS Epic Departments. Includes contact, location, tax information. Data also grouped by setting and program.</p>
+			</div>
+
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 tile rdocs fellows">	<a href="https://rstudio-connect.chop.edu/connect/#/apps/650">
+				<img class="img-responsive img-rounded shiny-prev-img" src="images/screenshot.R.fellow_transfer.png">
+			</a><h4>Fellows Patient Transfer List</h4>
+			<span class="badge alert-info">R-Connect</span>
+			<span class="badge alert-info">Fellows</span>
+			<br><br><p>A complete list of patients from fellows' Epic Patient List. Used by coordinators to determine which patients to transfer patients to after training rotation ends.</p>
+			</div>
+
+
+			</div>			
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+    
+		<hr>
+</body>
+
+</html>
